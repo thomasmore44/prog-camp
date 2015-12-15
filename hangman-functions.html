@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hangman Functions</title>
+</head>
+<body>
+  <script>
+  var numberOfGuesses;
+
+function pickWord() {
+  var words = [
+            "javascript",
+            "antinomian",
+            "manichean",
+            "autonomous",
+            "acephalous",
+            "acerbic",
+            "acidic"
+          ];
+  var word = words[(Math.floor(Math.random() * words.length))]
+  return word;
+};
+function setupAnswerArray(word) {
+  var answerArray = [];
+  for (var i=0; i<word.length; i++) {
+    answerArray[i] = "_"
+  }
+  return answerArray;
+};
+function showPlayerProgress() {
+
+};
+
+function getGuess() {
+
+};
+
+  var remainingLetters = word.length;
+
+function updateGameState(guess, word, answerArray) {
+  numberOfGuesses++;
+};
+
+function endGame(answerArray) {
+
+};
+
+
+  while (remainingLetters > 0 && remainingGuesses > 0) {
+      showPlayerProgress(answerArray);
+      var guess = getGuess();
+      if (guess === null) {
+        break;
+      } else if (guess.length !== 1) {
+        alert("Please enter a single letter.");
+      } else {
+
+      }
+
+  }
+
+
+  </script>
+</body>
+</html>

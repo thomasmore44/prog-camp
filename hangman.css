@@ -1,0 +1,19 @@
+#answer-space {
+  font-size: 2em;
+}
+
+#letter-input {
+  line-height: 1.3em;
+  font-size: 2em;
+
+}
+.gallows {
+  max-width: 100%;
+}
+.game-container {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+  margin-bottom: auto;
+}

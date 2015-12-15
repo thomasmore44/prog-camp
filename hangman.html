@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hangman Game</title>
+  <link rel="stylesheet" href="hangman.css">
+</head>
+<body>
+<div class="game-container">
+  <canvas id="gallows">
+  </canvas>
+  <input id="letter-input" type="text" placeholder="Guess your letter...">
+  <!-- <input type="submit" value="Submit" onclick="gameLoop();"> <br /> -->
+  <span id="answer-space"></span><br>
+  <span id="guess-space"></span><br>
+  <span id="letter-space"></span><br>
+  <span id="guessed"></span><br>
+  <div id="game-progress"></div><br>
+</div>
+
+  <script>
+// An array of words
+  var words = [
+    "javascript",
+    "monkey",
+    "amazing",
+    "pancake",
+    "jealous",
+    "ridiculous",
+    "apophthegmatic"
+  ];
+// Pick a random word
+  var word = words[Math.floor(Math.random() * words.length)];
+
+// Set up Answer Array
+  var answerArray = [];
+    for (var i=0; i < word.length; i++) {
+    answerArray[i] = "_";
+    }
+  var guessedLetters =[];
+  var remainingLetters = word.length - 1;
+  var remainingGuesses = word.length + 5;
+
+// Game Loop
+
+function gameLoop() {
+    var guess = document.getElementById("letter-input").value;
+  if ((remainingLetters > 0) && (remainingGuesses > 0)) {
+    //Show player progress
+    document.getElementById("answer-space").innerHTML = answerArray.join(" ");
+    document.getElementById("guess-space").innerHTML = "Remaining Guesses: " + remainingGuesses;
+    document.getElementById("letter-space").innerHTML = "Remaining Letters: " + remainingLetters;
+    guessedLetters.push(guess);
+    document.getElementById("guessed").innerHTML = guessedLetters.join(" ");
+
+    if (guess == null) {
+      //Remind player and leave game-state unchanged
+    document.getElementById("game-progress").innerHTML = "Please guess something!"
+    } else if (guess.length !== 1) {
+      //Remind player and leave game-state unchanged
+    document.getElementById("game-progress").innerHTML = "Please input a single letter..."
+    }
+    else {
+      remainingGuesses--;
+      if (guessedLetters.indexOf(guess) !== -1) {
+        //Update game state with the guess...
+        for (var j=0; j < word.length; j++) {
+            if (word[j] === guess) {
+              answerArray[j] = guess;
+              remainingLetters--;
+            }
+        document.getElementById("answer-space").innerHTML = answerArray.join(" ");
+        }
+      }
+    }
+  //End Game if Guesses run out
+  if (remainingGuesses == 0) {
+    document.getElementById("game-progress").innerHTML = "You are all out of guesses! GAME OVER!! The answer was " + word;
+    }
+  // Show answer and congratulate player
+  if (remainingLetters == 0) {
+      // alert(answerArray.join(" "));
+      document.getElementById("game-progress").innerHTML = "You are all out of guesses! GAME OVER!! The answer was " + word;
+    }
+
+  }
+};
+
+document.getElementById("letter-input").keyup(function (e) {
+    if (e.keyCode == 13) {
+       gameLoop();
+    }
+  });
+  </script>
+
+
+
+</body>
+</html>
