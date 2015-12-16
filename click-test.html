@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Click Test</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+   <style>
+  html, body {
+    width: 100%;
+    height: 100%;
+  }
+   </style>
+</head>
+<body>
+<h1 id="heading">HELLO WORLD...</h1>
+  <script>
+
+  $("html").click(function(e) {
+    $("#heading").offset({
+      left: event.pageX,
+      top: event.pageY
+    });
+  });
+  </script>
+</body>
+</html>
