@@ -3,9 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Hangman Functions</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <body>
+<h1>HANGMAN!</h1>
+<div class="game-container">
+  <canvas id="gallows">
+  </canvas>
+  <input id="letter-input" type="text" placeholder="Guess your letter...">
+  <input type="submit" value="Submit" onclick="gameLoop();"> <br />
+  <span id="answer-space"></span><br>
+  <span id="guess-space"></span><br>
+  <span id="letter-space"></span><br>
+  <span id="guessed"></span><br>
+  <div id="game-progress"></div><br>
+</div>
   <script>
+  $("h1").fadeOut(1000).fadeIn(2000);
   var numberOfGuesses;
 
 function pickWord() {
@@ -21,6 +35,9 @@ function pickWord() {
   var word = words[(Math.floor(Math.random() * words.length))]
   return word;
 };
+
+pickWord();
+
 function setupAnswerArray(word) {
   var answerArray = [];
   for (var i=0; i<word.length; i++) {
@@ -28,6 +45,9 @@ function setupAnswerArray(word) {
   }
   return answerArray;
 };
+
+setupAnswerArray();
+
 function showPlayerProgress() {
 
 };
